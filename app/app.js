@@ -5,7 +5,7 @@
  * code.
  */
 
-// Needed for redux-saga es6 generator support
+// Needed for es6 generator support
 import 'babel-polyfill';
 
 // Import all the third party stuff
@@ -79,9 +79,6 @@ if (!window.Intl) {
   (new Promise((resolve) => {
     resolve(import('intl'));
   }))
-    .then(() => Promise.all([
-      import('intl/locale-data/jsonp/en.js'),
-    ]))
     .then(() => render(translationMessages))
     .catch((err) => {
       throw err;
