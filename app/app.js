@@ -15,12 +15,13 @@ import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
 import 'sanitize.css/sanitize.css';
+import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 
-// Import root app
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
+
 import App from 'containers/App';
-
-// Import Language Provider
 import LanguageProvider from 'containers/LanguageProvider';
+import theme from 'assets/theme/DefaultTheme';
 
 // Load the favicon, the manifest.json file and the .htaccess file
 /* eslint-disable import/no-unresolved, import/extensions */
@@ -56,7 +57,11 @@ const render = (messages) => {
     <Provider store={store}>
       <LanguageProvider messages={messages}>
         <ConnectedRouter history={history}>
-          <App />
+          <StyledThemeProvider theme={theme}>
+            <MuiThemeProvider theme={theme}>
+              <App />
+            </MuiThemeProvider>
+          </StyledThemeProvider>
         </ConnectedRouter>
       </LanguageProvider>
     </Provider>,
@@ -79,6 +84,9 @@ if (!window.Intl) {
   (new Promise((resolve) => {
     resolve(import('intl'));
   }))
+    .then(() => Promise.all([
+      import('intl/locale-data/jsonp/pt.js'),
+    ]))
     .then(() => render(translationMessages))
     .catch((err) => {
       throw err;

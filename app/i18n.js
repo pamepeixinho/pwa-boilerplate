@@ -8,6 +8,7 @@ import { addLocaleData } from 'react-intl';
 import ptLocaleData from 'react-intl/locale-data/pt';
 
 import { DEFAULT_LOCALE } from './containers/App/constants'; // eslint-disable-line
+import ptTranslationMessages from './translations/pt.json';
 
 export const appLocales = [
   'pt',
@@ -26,4 +27,8 @@ export const formatTranslationMessages = (locale, messages) => {
     }
     return Object.assign(formattedMessages, { [key]: message });
   }, {});
+};
+
+export const translationMessages = {
+  pt: formatTranslationMessages('pt', ptTranslationMessages),
 };
