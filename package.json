@@ -91,7 +91,6 @@
       "es6": true
     },
     "plugins": [
-      "redux-saga",
       "react",
       "jsx-a11y"
     ],
@@ -154,8 +153,6 @@
       "react/require-default-props": 0,
       "react/require-extension": 0,
       "react/self-closing-comp": 0,
-      "redux-saga/no-yield-in-race": 2,
-      "redux-saga/yield-effects": 2,
       "require-yield": 0
     },
     "settings": {
@@ -212,6 +209,8 @@
     "testRegex": "tests/.*\\.test\\.js$"
   },
   "dependencies": {
+    "@material-ui/core": "^1.2.3",
+    "@material-ui/icons": "^1.1.0",
     "babel-polyfill": "6.23.0",
     "chalk": "^1.1.3",
     "compression": "1.6.2",
@@ -227,8 +226,8 @@
     "lodash": "4.17.4",
     "minimist": "1.2.0",
     "prop-types": "15.5.10",
-    "react": "15.6.1",
-    "react-dom": "15.6.1",
+    "react": "16.4.1",
+    "react-dom": "16.4.1",
     "react-helmet": "5.1.3",
     "react-intl": "2.3.0",
     "react-loadable": "4.0.3",
@@ -237,7 +236,6 @@
     "react-router-redux": "5.0.0-alpha.6",
     "redux": "3.6.0",
     "redux-immutable": "4.0.0",
-    "redux-saga": "0.15.3",
     "reselect": "3.0.1",
     "sanitize.css": "4.1.0",
     "styled-components": "2.0.0",
@@ -272,7 +270,6 @@
     "eslint-plugin-import": "2.7.0",
     "eslint-plugin-jsx-a11y": "5.0.3",
     "eslint-plugin-react": "7.0.1",
-    "eslint-plugin-redux-saga": "0.3.0",
     "eventsource-polyfill": "0.9.6",
     "exports-loader": "0.6.4",
     "file-loader": "0.11.1",
