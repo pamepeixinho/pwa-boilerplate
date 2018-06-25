@@ -8,7 +8,7 @@ A PWA boilerplate based on [react-boilerplate] with some minor updates:
 
 ## Road map
 
-- [ ] add material-ui
+- [x] add material-ui
 - [ ] add redux-pack
 - [ ] add redux-thunks
 - [ ] override style of material-ui with jss over
