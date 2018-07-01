@@ -6,20 +6,16 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { fromJS } from 'immutable';
 import { middleware as reduxPackMiddleware } from 'redux-pack';
 import thunk from 'redux-thunk';
-import createLogger from 'redux-logger';
 import { routerMiddleware } from 'react-router-redux';
 import createReducer from './reducers';
 
 export default function configureStore(initialState = {}, history) {
-  const logger = createLogger();
-
   // Create the store with two middlewares
   // 2. routerMiddleware: Syncs the location/URL path to the state
   const middlewares = [
-    routerMiddleware(history),
-    reduxPackMiddleware,
     thunk,
-    logger,
+    reduxPackMiddleware,
+    routerMiddleware(history),
   ];
 
   const enhancers = [

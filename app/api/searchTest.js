@@ -1,6 +1,6 @@
 import { post } from './request';
 
-export const search = (text, startDate, endDate) => {
+export const search = (text) => {
   const endpoint = 'https://backend-bbb.herokuapp.com/search/by-domain';
-  return post(endpoint, { query: text, startDate, endDate });
+  return post(endpoint, { query: text });
 };

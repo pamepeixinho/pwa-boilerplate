@@ -4,5 +4,5 @@ import { SEARCH_TEST } from './constants';
 
 export const search = () => ({
   type: SEARCH_TEST,
-  promise: searchEndpoint(this.state.searchText),
+  promise: searchEndpoint('trump'),
 });

@@ -12,14 +12,8 @@ export const initialState = fromJS({
 
 const handleSearchTest = (state, action) =>
   handle(state, action, {
-    start: (prevState) => {
-      debugger;
-      return prevState.merge({ loaded: false });
-    },
-    finished: (prevState) => {
-      debugger;
-      return prevState.merge({ loaded: true });
-    },
+    start: (prevState) => prevState.merge({ loaded: false }),
+    finish: (prevState) => prevState.merge({ loaded: true }),
     success: (prevState) => prevState.merge({ error: false }),
     failure: (prevState) => prevState.merge({ error: true }),
   });
