@@ -23,6 +23,10 @@ import App from 'containers/App';
 import LanguageProvider from 'containers/LanguageProvider';
 import theme from 'assets/theme/DefaultTheme';
 
+import JssProvider from 'react-jss/lib/JssProvider';
+import { create } from 'jss';
+import { createGenerateClassName, jssPreset } from '@material-ui/core/styles';
+
 // Load the favicon, the manifest.json file and the .htaccess file
 /* eslint-disable import/no-unresolved, import/extensions */
 import '!file-loader?name=[name].[ext]!./images/favicon.ico';
@@ -52,16 +56,26 @@ const history = createHistory();
 const store = configureStore(initialState, history);
 const MOUNT_NODE = document.getElementById('app');
 
+const styleNode = document.createComment('jss-insertion-point');
+document.head.insertBefore(styleNode, document.head.firstChild);
+
+const generateClassName = createGenerateClassName();
+const jss = create(jssPreset());
+// We define a custom insertion point that JSS will look for injecting the styles in the DOM.
+jss.options.insertionPoint = 'jss-insertion-point';
+
 const render = (messages) => {
   ReactDOM.render(
     <Provider store={store}>
       <LanguageProvider messages={messages}>
         <ConnectedRouter history={history}>
-          <StyledThemeProvider theme={theme}>
-            <MuiThemeProvider theme={theme}>
-              <App />
-            </MuiThemeProvider>
-          </StyledThemeProvider>
+          <JssProvider jss={jss} generateClassName={generateClassName}>
+            <StyledThemeProvider theme={theme}>
+              <MuiThemeProvider theme={theme}>
+                <App />
+              </MuiThemeProvider>
+            </StyledThemeProvider>
+          </JssProvider>
         </ConnectedRouter>
       </LanguageProvider>
     </Provider>,
