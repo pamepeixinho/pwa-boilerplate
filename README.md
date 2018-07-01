@@ -12,3 +12,5 @@ A PWA boilerplate based on [react-boilerplate] with some minor updates:
 - [x] add redux-pack
 - [x] add redux-thunks
 - [ ] override style of material-ui with jss over
+- [ ] fix components generator
+- [ ] improve readme
