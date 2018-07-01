@@ -6,9 +6,9 @@ A PWA boilerplate based on [react-boilerplate] with some minor updates:
 
 [react-boilerplate]: https://www.reactboilerplate.com/
 
-## Road map
+## Roadmap
 
 - [x] add material-ui
-- [ ] add redux-pack
-- [ ] add redux-thunks
+- [x] add redux-pack
+- [x] add redux-thunks
 - [ ] override style of material-ui with jss over
