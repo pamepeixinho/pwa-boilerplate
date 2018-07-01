@@ -1,22 +1,18 @@
-/*
- * HomePage
- *
- * This is the first thing users see of our App, at the '/' route
- *
- * NOTE: while this component should technically be a stateless functional
- * component (SFC), hot reloading does not currently support SFCs. If hot
- * reloading is not a necessity for you then you can refactor it and remove
- * the linting exception.
- */
-
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
+import { createSelector } from 'reselect';
+import { connect } from 'react-redux';
 
 import Button from '@material-ui/core/Button';
 
 import messages from './messages';
+import { search } from './actions';
 
-export default class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+  componentDidMount() {
+
+  }
+
   render() {
     return (
       <div>
@@ -28,3 +24,16 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
     );
   }
 }
+
+HomePage.propTypes = {
+};
+
+
+const mapStateToProps = createSelector(
+);
+
+const mapDispatchToProps = (dispatch) => ({
+  search: dispatch(search),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
