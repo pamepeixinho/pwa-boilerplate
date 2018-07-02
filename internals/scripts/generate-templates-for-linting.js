@@ -33,7 +33,7 @@ const removeTestsDirFrom = (relativePath) => () => rimraf.sync(path.join(__dirna
 const plop = nodePlop('./index');
 
 const componentGen = plop.getGenerator('component');
-componentGen.runActions({ name: 'RbGeneratedComponentEsclass', type: 'React.Component', wantMessages: true, wantLoadable: true, })
+componentGen.runActions({ name: 'RbGeneratedComponentEsclass', type: 'React.Component', wantMessages: true, wantLoadable: true })
   .then(checkForErrors)
   .then(removeTestsDirFrom('components/RbGeneratedComponentEsclass'))
   .catch(reportErrorsFor('component/React.Component'));
@@ -54,7 +54,7 @@ containerGen.runActions({
   type: 'React.PureComponent',
   wantHeaders: true,
   wantActionsAndReducer: true,
-  wantSagas: true,
+  wantReduxPack: true,
   wantMessages: true,
   wantLoadable: true,
 })
@@ -67,7 +67,7 @@ containerGen.runActions({
   type: 'React.Component',
   wantHeaders: true,
   wantActionsAndReducer: true,
-  wantSagas: true,
+  wantReduxPack: true,
   wantMessages: true,
   wantLoadable: true,
 })
@@ -80,7 +80,7 @@ containerGen.runActions({
   type: 'Stateless Function',
   wantHeaders: true,
   wantActionsAndReducer: true,
-  wantSagas: true,
+  wantReduxPack: true,
   wantMessages: true,
   wantLoadable: true,
 })

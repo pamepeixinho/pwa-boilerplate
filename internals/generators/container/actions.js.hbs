@@ -4,6 +4,9 @@
  *
  */
 
+{{#if wantReduxPack}}
+import { fetch } from '../../api/fake';
+{{/if}}
 import {
   DEFAULT_ACTION,
 } from './constants';
@@ -11,5 +14,8 @@ import {
 export function defaultAction() {
   return {
     type: DEFAULT_ACTION,
+    {{#if wantReduxPack}}
+    promise: fetch(DEFAULT_ACTION),
+    {{/if}}
   };
 }
