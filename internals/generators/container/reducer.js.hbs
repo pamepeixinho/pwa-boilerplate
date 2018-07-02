@@ -5,16 +5,35 @@
  */
 
 import { fromJS } from 'immutable';
+{{#if wantReduxPack}}
+import { handle } from 'redux-pack';
+{{/if}}
+
 import {
   DEFAULT_ACTION,
 } from './constants';
 
-const initialState = fromJS({});
+const initialState = fromJS({
+  foo: 'empty',
+});
+
+{{#if wantReduxPack}}
+const handleSuccess = (state, action) => state.merge({ foo: action.payload.foo });
+{{/if}}
+
+const handleAction = (state, action) =>
+ handle(state, action, {
+   success: (prevState) => handleSuccess(prevState, action),
+ });
 
 function {{ camelCase name }}Reducer(state = initialState, action) {
   switch (action.type) {
     case DEFAULT_ACTION:
+      {{#if wantReduxPack}}
+      return handleAction(state, action);
+      {{else}}
       return state;
+      {{/if}}
     default:
       return state;
   }

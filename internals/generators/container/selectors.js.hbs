@@ -9,17 +9,14 @@ const select{{ properCase name }}Domain = (state) => state.get('{{ camelCase nam
  * Other specific selectors
  */
 
-
-/**
- * Default selector used by {{ properCase name }}
- */
-
-const makeSelect{{ properCase name }} = () => createSelector(
+{{#if wantReduxPack}}
+export const makeSelectFoo = () => createSelector(
+  select{{ properCase name }}Domain(),
+  (substate) => substate.get('foo').toJS()
+);
+{{else}}
+export const makeSelect{{ properCase name }} = () => createSelector(
   select{{ properCase name }}Domain,
   (substate) => substate.toJS()
 );
-
-export default makeSelect{{ properCase name }};
-export {
-  select{{ properCase name }}Domain,
-};
+{{/if}}

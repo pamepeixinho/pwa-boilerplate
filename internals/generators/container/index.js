@@ -36,9 +36,9 @@ module.exports = {
     message: 'Do you want an actions/constants/selectors/reducer tuple for this container?',
   }, {
     type: 'confirm',
-    name: 'wantSaga',
+    name: 'wantReduxPack',
     default: true,
-    message: 'Do you want sagas for asynchronous flows? (e.g. fetching data)',
+    message: 'Do you want redux-pack for asynchronous flows? (e.g. fetching data)',
   }, {
     type: 'confirm',
     name: 'wantMessages',
@@ -140,22 +140,17 @@ module.exports = {
       });
     }
 
-    // Sagas
-    if (data.wantSaga) {
+    // Fake backend
+    if (data.wantReduxPack) {
       actions.push({
         type: 'add',
-        path: '../../app/containers/{{properCase name}}/saga.js',
-        templateFile: './container/saga.js.hbs',
-        abortOnFail: true,
-      });
-      actions.push({
-        type: 'add',
-        path: '../../app/containers/{{properCase name}}/tests/saga.test.js',
-        templateFile: './container/saga.test.js.hbs',
+        path: '../../app/api/fake/index.js',
+        templateFile: './container/fake-backend.js.hbs',
         abortOnFail: true,
       });
     }
 
+    // Loadable
     if (data.wantLoadable) {
       actions.push({
         type: 'add',
